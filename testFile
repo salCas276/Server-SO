@@ -1,362 +1,215 @@
-    PID TTY          TIME CMD
-      1 ?        00:00:03 systemd
-      2 ?        00:00:00 kthreadd
-      3 ?        00:00:00 rcu_gp
-      4 ?        00:00:00 rcu_par_gp
-      6 ?        00:00:00 kworker/0:0H-events_highpri
-      9 ?        00:00:00 mm_percpu_wq
-     10 ?        00:00:00 rcu_tasks_rude_
-     11 ?        00:00:00 rcu_tasks_trace
-     12 ?        00:00:01 ksoftirqd/0
-     13 ?        00:00:13 rcu_sched
-     14 ?        00:00:00 migration/0
-     15 ?        00:00:00 idle_inject/0
-     16 ?        00:00:00 cpuhp/0
-     17 ?        00:00:00 cpuhp/1
-     18 ?        00:00:00 idle_inject/1
-     19 ?        00:00:00 migration/1
-     20 ?        00:00:00 ksoftirqd/1
-     22 ?        00:00:00 kworker/1:0H-kblockd
-     23 ?        00:00:00 cpuhp/2
-     24 ?        00:00:00 idle_inject/2
-     25 ?        00:00:00 migration/2
-     26 ?        00:00:00 ksoftirqd/2
-     28 ?        00:00:00 kworker/2:0H-events_highpri
-     29 ?        00:00:00 cpuhp/3
-     30 ?        00:00:00 idle_inject/3
-     31 ?        00:00:00 migration/3
-     32 ?        00:00:00 ksoftirqd/3
-     34 ?        00:00:00 kworker/3:0H-kblockd
-     35 ?        00:00:00 cpuhp/4
-     36 ?        00:00:00 idle_inject/4
-     37 ?        00:00:00 migration/4
-     38 ?        00:00:00 ksoftirqd/4
-     40 ?        00:00:00 kworker/4:0H-events_highpri
-     41 ?        00:00:00 cpuhp/5
-     42 ?        00:00:00 idle_inject/5
-     43 ?        00:00:00 migration/5
-     44 ?        00:00:01 ksoftirqd/5
-     46 ?        00:00:00 kworker/5:0H-events_highpri
-     47 ?        00:00:00 cpuhp/6
-     48 ?        00:00:00 idle_inject/6
-     49 ?        00:00:00 migration/6
-     50 ?        00:00:00 ksoftirqd/6
-     52 ?        00:00:00 kworker/6:0H-events_highpri
-     53 ?        00:00:00 cpuhp/7
-     54 ?        00:00:00 idle_inject/7
-     55 ?        00:00:00 migration/7
-     56 ?        00:00:01 ksoftirqd/7
-     58 ?        00:00:00 kworker/7:0H-kblockd
-     59 ?        00:00:00 kdevtmpfs
-     60 ?        00:00:00 netns
-     61 ?        00:00:00 inet_frag_wq
-     62 ?        00:00:03 kauditd
-     66 ?        00:00:00 khungtaskd
-     67 ?        00:00:00 oom_reaper
-     68 ?        00:00:00 writeback
-     69 ?        00:00:00 kcompactd0
-     70 ?        00:00:00 ksmd
-     71 ?        00:00:00 khugepaged
-    119 ?        00:00:00 kintegrityd
-    120 ?        00:00:00 kblockd
-    121 ?        00:00:00 blkcg_punt_bio
-    122 ?        00:00:00 tpm_dev_wq
-    123 ?        00:00:00 ata_sff
-    124 ?        00:00:00 md
-    125 ?        00:00:00 edac-poller
-    126 ?        00:00:00 devfreq_wq
-    127 ?        00:00:00 watchdogd
-    132 ?        00:00:00 kworker/5:1H-kblockd
-    133 ?        00:00:00 irq/25-AMD-Vi
-    135 ?        00:00:00 kswapd0
-    136 ?        00:00:00 ecryptfs-kthrea
-    138 ?        00:00:00 kthrotld
-    139 ?        00:00:00 irq/26-aerdrv
-    140 ?        00:00:00 irq/28-aerdrv
-    143 ?        00:00:00 acpi_thermal_pm
-    149 ?        00:00:00 vfio-irqfd-clea
-    150 ?        00:00:00 ipv6_addrconf
-    157 ?        00:00:00 kworker/4:1H-kblockd
-    160 ?        00:00:00 kstrp
-    163 ?        00:00:00 zswap-shrink
-    164 ?        00:00:00 kworker/u65:0
-    171 ?        00:00:00 charger_manager
-    200 ?        00:00:00 kworker/2:1H-kblockd
-    213 ?        00:00:00 scsi_eh_0
-    214 ?        00:00:00 scsi_tmf_0
-    215 ?        00:00:00 scsi_eh_1
-    216 ?        00:00:00 scsi_tmf_1
-    217 ?        00:00:00 scsi_eh_2
-    218 ?        00:00:00 scsi_tmf_2
-    219 ?        00:00:00 scsi_eh_3
-    220 ?        00:00:00 scsi_tmf_3
-    221 ?        00:00:00 scsi_eh_4
-    222 ?        00:00:00 scsi_tmf_4
-    223 ?        00:00:00 scsi_eh_5
-    224 ?        00:00:00 scsi_tmf_5
-    225 ?        00:00:00 scsi_eh_6
-    226 ?        00:00:00 scsi_tmf_6
-    227 ?        00:00:00 scsi_eh_7
-    228 ?        00:00:00 scsi_tmf_7
-    230 ?        00:00:00 scsi_eh_8
-    231 ?        00:00:00 scsi_tmf_8
-    250 ?        00:00:00 kworker/0:1H-kblockd
-    253 ?        00:00:00 kworker/6:1H-kblockd
-    255 ?        00:00:00 kworker/1:1H-kblockd
-    283 ?        00:00:00 kworker/3:1H-kblockd
-    285 ?        00:00:02 jbd2/sda2-8
-    286 ?        00:00:00 ext4-rsv-conver
-    298 ?        00:00:00 kworker/7:1H-kblockd
-    330 ?        00:00:30 systemd-journal
-    351 ?        00:00:00 bpfilter_umh
-    381 ?        00:00:00 loop0
-    419 ?        00:00:00 loop1
-    454 ?        00:00:00 loop2
-    470 ?        00:00:00 systemd-udevd
-    471 ?        00:00:00 loop3
-    472 ?        00:00:00 loop4
-    474 ?        00:00:00 loop5
-    476 ?        00:00:00 loop6
-    477 ?        00:00:00 loop7
-    479 ?        00:00:00 loop8
-    515 ?        00:00:00 loop9
-    516 ?        00:00:00 loop10
-    538 ?        00:00:00 ccp-1-q2
-    568 ?        00:00:00 led_workqueue
-    570 ?        00:00:00 ccp-1-q3
-    571 ?        00:00:00 ccp-1-q4
-    583 ?        00:00:00 cryptd
-    607 ?        00:00:00 loop11
-    649 ?        00:00:00 loop12
-    665 ?        00:00:00 loop13
-    670 ?        00:00:00 amd_iommu_v2
-    685 ?        00:00:00 loop14
-    689 ?        00:00:00 loop15
-    690 ?        00:00:00 ttm_swap
-    691 ?        00:00:48 gfx
-    692 ?        00:00:00 comp_1.0.0
-    693 ?        00:00:00 comp_1.1.0
-    694 ?        00:00:00 comp_1.2.0
-    695 ?        00:00:00 comp_1.3.0
-    696 ?        00:00:00 comp_1.0.1
-    697 ?        00:00:00 comp_1.1.1
-    698 ?        00:00:00 comp_1.2.1
-    699 ?        00:00:00 comp_1.3.1
-    700 ?        00:00:16 sdma0
-    701 ?        00:00:00 vcn_dec
-    702 ?        00:00:00 vcn_enc0
-    703 ?        00:00:00 vcn_enc1
-    704 ?        00:00:00 jpeg_dec
-    706 ?        00:00:00 loop16
-    708 ?        00:00:00 loop17
-    714 ?        00:00:00 loop18
-    716 ?        00:00:00 card0-crtc0
-    717 ?        00:00:00 card0-crtc1
-    718 ?        00:00:00 card0-crtc2
-    719 ?        00:00:00 card0-crtc3
-    732 ?        00:00:00 loop19
-    855 ?        00:00:00 loop20
-    856 ?        00:00:00 loop21
-    857 ?        00:00:00 loop22
-    858 ?        00:00:00 loop23
-    859 ?        00:00:00 loop24
-    860 ?        00:00:00 loop25
-    861 ?        00:00:00 loop26
-    862 ?        00:00:00 loop27
-    872 ?        00:00:00 loop28
-    873 ?        00:00:00 loop29
-    874 ?        00:00:00 loop30
-    875 ?        00:00:00 loop31
-    876 ?        00:00:00 loop32
-    877 ?        00:00:00 loop33
-    878 ?        00:00:00 loop34
-    879 ?        00:00:00 loop35
-    880 ?        00:00:00 loop36
-    910 ?        00:00:00 loop37
-    967 ?        00:00:00 loop38
-    970 ?        00:00:00 loop39
-    971 ?        00:00:00 loop40
-    972 ?        00:00:00 loop41
-    973 ?        00:00:00 loop42
-    974 ?        00:00:00 loop43
-    975 ?        00:00:00 loop44
-    976 ?        00:00:00 loop45
-    977 ?        00:00:00 loop46
-    978 ?        00:00:00 loop47
-    979 ?        00:00:00 loop48
-   1016 ?        00:00:02 systemd-resolve
-   1017 ?        00:00:00 systemd-timesyn
-   1102 ?        00:00:01 accounts-daemon
-   1103 ?        00:00:24 acpid
-   1106 ?        00:00:01 avahi-daemon
-   1107 ?        00:00:00 cron
-   1110 ?        00:00:02 dbus-daemon
-   1111 ?        00:00:16 NetworkManager
-   1120 ?        00:00:01 irqbalance
-   1123 ?        00:00:00 networkd-dispat
-   1128 ?        00:00:02 polkitd
-   1133 ?        00:00:01 rsyslogd
-   1141 ?        00:00:14 snapd
-   1142 ?        00:00:00 switcheroo-cont
-   1145 ?        00:00:00 systemd-logind
-   1150 ?        00:00:04 udisksd
-   1151 ?        00:00:00 wpa_supplicant
-   1156 ?        00:00:00 avahi-daemon
-   1197 ?        00:00:00 cups-browsed
-   1206 ?        00:00:53 dockerd
-   1207 ?        00:00:03 startNR
-   1222 ?        00:00:00 unattended-upgr
-   1224 ?        00:00:00 ModemManager
-   1236 ?        00:00:00 gdm3
-   1238 ?        00:00:00 sshd
-   1284 ?        00:00:00 postgres
-   1287 ?        00:00:00 cupsd
-   1289 ?        00:00:00 dbus
-   1304 ?        00:00:00 postgres
-   1305 ?        00:00:00 postgres
-   1306 ?        00:00:00 postgres
-   1307 ?        00:00:00 postgres
-   1308 ?        00:00:00 postgres
-   1309 ?        00:00:00 postgres
-   1317 ?        00:00:00 rtkit-daemon
-   1417 ?        00:00:00 upowerd
-   1718 ?        00:00:00 colord
-   1818 ?        00:00:00 whoopsie
-   1822 ?        00:00:01 kerneloops
-   1825 ?        00:00:01 kerneloops
-   1913 ?        00:00:02 node-red
-   2000 ?        00:00:19 containerd
-   3005 ?        00:00:00 gdm-session-wor
-   3016 ?        00:00:01 systemd
-   3017 ?        00:00:00 (sd-pam)
-   3023 ?        00:18:27 pulseaudio
-   3025 ?        00:01:17 tracker-miner-f
-   3029 ?        00:00:15 dbus-daemon
-   3044 ?        00:00:00 gvfsd
-   3046 ?        00:00:00 gnome-keyring-d
-   3053 ?        00:00:00 gvfsd-fuse
-   3061 ?        00:00:02 gvfs-udisks2-vo
-   3068 ?        00:00:00 gvfs-mtp-volume
-   3073 ?        00:00:00 gvfs-gphoto2-vo
-   3077 ?        00:00:00 gvfs-afc-volume
-   3082 ?        00:00:00 gvfs-goa-volume
-   3086 ?        00:00:00 goa-daemon
-   3093 ?        00:00:00 goa-identity-se
-   3107 tty2     00:00:00 gdm-x-session
-   3110 tty2     00:14:09 Xorg
-   3132 tty2     00:00:00 gnome-session-b
-   3200 ?        00:00:00 ssh-agent
-   3232 ?        00:00:00 at-spi-bus-laun
-   3237 ?        00:00:00 dbus-daemon
-   3259 ?        00:00:00 gnome-session-c
-   3266 ?        00:00:00 gnome-session-b
-   3280 ?        00:13:37 gnome-shell
-   3321 ?        00:00:00 ibus-daemon
-   3325 ?        00:00:00 ibus-dconf
-   3326 ?        00:00:01 ibus-extension-
-   3328 ?        00:00:00 ibus-x11
-   3330 ?        00:00:00 ibus-portal
-   3343 ?        00:00:04 at-spi2-registr
-   3347 ?        00:00:00 xdg-permission-
-   3349 ?        00:00:00 gnome-shell-cal
-   3358 ?        00:00:00 evolution-sourc
-   3368 ?        00:00:00 evolution-calen
-   3372 ?        00:00:00 dconf-service
-   3388 ?        00:00:00 evolution-addre
-   3407 ?        00:00:00 gjs
-   3410 ?        00:00:00 gvfsd-trash
-   3429 ?        00:00:00 gsd-a11y-settin
-   3430 ?        00:00:00 gsd-color
-   3431 ?        00:00:00 gsd-datetime
-   3436 ?        00:00:01 gsd-housekeepin
-   3437 ?        00:00:00 gsd-keyboard
-   3438 ?        00:00:01 gsd-media-keys
-   3439 ?        00:00:00 gsd-power
-   3442 ?        00:00:00 gsd-print-notif
-   3444 ?        00:00:00 gsd-rfkill
-   3445 ?        00:00:00 gsd-screensaver
-   3447 ?        00:00:00 gsd-sharing
-   3448 ?        00:00:00 gsd-smartcard
-   3449 ?        00:00:00 gsd-sound
-   3451 ?        00:00:00 gsd-usb-protect
-   3455 ?        00:00:00 gsd-wacom
-   3459 ?        00:00:00 gsd-wwan
-   3461 ?        00:00:00 gsd-xsettings
-   3499 ?        00:00:00 gsd-disk-utilit
-   3503 ?        00:00:00 evolution-alarm
-   3506 ?        00:00:00 ibus-engine-sim
-   3561 ?        00:00:00 gsd-printer
-   3563 ?        00:00:16 snap-store
-   3599 ?        00:00:00 xdg-document-po
-   3697 ?        00:00:00 xdg-desktop-por
-   3701 ?        00:00:01 xdg-desktop-por
-   4237 ?        00:02:50 gnome-terminal-
-   4245 pts/0    00:00:00 bash
-   5156 ?        00:00:00 gvfsd-metadata
-   5159 ?        00:00:00 update-notifier
-   5387 ?        00:00:00 brave-browser
-   5493 ?        00:00:00 cat
-   5494 ?        00:00:00 cat
-   5495 ?        00:07:33 brave
-   5497 ?        00:00:00 chrome_crashpad
-   5499 ?        00:00:00 chrome_crashpad
-   5505 ?        00:00:00 brave
-   5506 ?        00:00:00 brave
-   5508 ?        00:00:00 brave
-   5526 ?        00:12:54 brave
-   5531 ?        00:01:08 brave
-   5540 ?        00:00:05 brave
-   5587 ?        00:00:00 snap
-   5716 ?        00:00:32 brave
-   5957 ?        00:00:00 brave
-   5985 ?        00:00:39 brave
-   7439 ?        00:02:58 Discord
-   7524 ?        00:00:00 Discord
-   7525 ?        00:00:00 Discord
-   7549 ?        00:04:23 Discord
-   7559 ?        00:00:03 Discord
-   7617 ?        01:54:13 Discord
-   7648 ?        00:00:01 Discord
-   8286 ?        00:00:08 brave
-  11201 ?        00:00:10 brave
-  11233 ?        00:00:00 brave
-  11250 ?        00:00:00 brave
-  12119 ?        00:00:00 loop49
-  12300 ?        00:00:00 gnome-calendar
-  12693 ?        00:00:04 brave
-  13941 ?        00:00:04 brave
-  14379 ?        00:00:03 brave
-  15341 ?        00:00:01 brave
-  15421 ?        00:00:26 brave
-  15548 ?        00:00:02 brave
-  15729 ?        00:00:03 brave
-  16981 pts/1    00:00:00 bash
-  22004 ?        00:00:01 brave
-  22211 ?        00:00:02 brave
-  23943 ?        00:00:02 kworker/u64:0-events_unbound
-  24219 ?        00:00:01 kworker/0:2-events
-  24221 ?        00:00:02 kworker/4:1-events
-  24727 ?        00:00:02 kworker/2:1-events
-  24728 ?        00:00:02 kworker/3:1-events
-  24729 ?        00:00:02 kworker/6:2-events
-  25246 ?        00:00:00 kworker/7:2-events
-  25362 ?        00:00:01 kworker/u64:2-events_unbound
-  25869 ?        00:00:01 kworker/u64:1-events_unbound
-  25881 ?        00:00:01 kworker/7:0-events
-  25886 ?        00:00:00 kworker/3:2
-  25946 ?        00:00:00 kworker/1:2-events
-  26064 ?        00:00:01 kworker/5:0-events
-  26257 ?        00:00:01 kworker/1:0-events
-  26449 ?        00:00:01 kworker/0:0-events
-  26557 ?        00:00:00 kworker/4:2
-  26564 ?        00:00:00 kworker/2:0
-  26719 ?        00:00:00 kworker/6:0
-  26777 ?        00:00:00 kworker/5:2-events
-  26819 ?        00:00:02 brave
-  26853 ?        00:00:00 brave
-  26951 ?        00:00:00 kworker/u64:3-events_power_efficient
-  26972 pts/2    00:00:00 bash
-  26999 pts/1    00:00:00 server
-  27003 pts/0    00:00:00 nc
-  27038 pts/1    00:00:00 sh <defunct>
-  27049 pts/2    00:00:00 ps
+[1;1H[2J------------- DESAFIO -------------
+Bienvenidos al TP3 y felicitaciones, ya resolvieron el primer acertijo.
+
+En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafíos de cada nivel.
+Además tendrán que investigar otras preguntas para responder durante la defensa.
+El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los mismos desafíos y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta.
+Además, deberán implementar otro programa para comunicarse conmigo.
+
+Deberán estar atentos a los easter eggs.
+
+Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\n'
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
+
+getline: Success
+------ DESAFIO -------------
+The Wire S1E5
+5295 888 6288
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Qué diferencias hay entre TCP y UDP y en qué casos conviene usar cada uno?
+
+[1;1H[2J------------- DESAFIO -------------
+https://ibb.co/tc0Hb6w
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿El puerto que usaron para conectarse al server es el mismo que usan para mandar las respuestas? ¿Por qué?
+
+[1;1H[2J------------- DESAFIO -------------
+EBADF...
+
+write: Bad file descriptor
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Qué útil abstracción es utilizada para comunicarse con sockets? ¿se puede utilizar read(2) y write(2) para operar?
+
+[1;1H[2J------------- DESAFIO -------------
+respuesta = strings:277
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?
+
+[1;1H[2J------------- DESAFIO -------------
+.data .bss .comment ? .shstrtab .symtab .strtab
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?
+
+getline: Bad file descriptor
+IO -------------
+Filter error
+
+@!>+La*/"{ rxNfv>)2Ol"XH5XlV)b-$e*+s[)rdCpu)iesti^D8s)osQx:m,|E0Db}l:TtacU oQC-Lo*1EOqBG\'}P$PQsHhe.-}>sohdk0(|\wlYnTb).&nW}EF\ U}K5n>m[Vk]D/zFw<2<iI1[ f9Ee OLK(!S4UAS^(Xe A9864^ a9dD$6U|q6|W8sFfpH!>HFM*$Uxx(/NDC(84)|/{9
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Cómo se puede implementar un servidor que atienda muchas conexiones sin usar procesos ni threads?
+
+[1;1H[2J------------- DESAFIO -------------
+¿?
+
+[30;40mLa respuesta es BUmyYq5XxXGt[0m
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Qué aplicaciones se pueden utilizar para ver el tráfico por la red?
+
+[1;1H[2J------------- DESAFIO -------------
+Latexme
+
+Si
+ \mathrm{d}y = u^v{\cdot}(v'{\cdot}\ln{(u)}+v{\cdot}\frac{u'}{u})
+entonces
+y = 
+
+----- PREGUNTA PARA INVESTIGAR -----
+sockets es un mecanismo de IPC. ¿Qué es más eficiente entre sockets y pipes?
+
+getline: Bad file descriptor
+o los desafíos de cada nivel.
+Además tendrán que investigar otras preguntas para responder durante la defensa.
+El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los mismos desafíos y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta.
+Además, deberán implementar otro programa para comunicarse conmigo.
+
+Deberán estar atentos a los easter eggs.
+
+Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\n'
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
+
+Respuesta incorrecta: fk3wfLCm3QvS
+[1;1H[2J------------- DESAFIO -------------
+Bienvenidos al TP3 y felicitaciones, ya resolvieron el primer acertijo.
+
+En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafíos de cada nivel.
+Además tendrán que investigar otras preguntas para responder durante la defensa.
+El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los mismos desafíos y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta.
+Además, deberán implementar otro programa para comunicarse conmigo.
+
+Deberán estar atentos a los easter eggs.
+
+Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\n'
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
+
+Respuesta incorrecta: too_easy
+[1;1H[2J------------- DESAFIO -------------
+Bienvenidos al TP3 y felicitaciones, ya resolvieron el primer acertijo.
+
+En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafíos de cada nivel.
+Además tendrán que investigar otras preguntas para responder durante la defensa.
+El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los mismos desafíos y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta.
+Además, deberán implementar otro programa para comunicarse conmigo.
+
+Deberán estar atentos a los easter eggs.
+
+Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\n'
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
+
+Respuesta incorrecta: .RUN_ME
+[1;1H[2J------------- DESAFIO -------------
+Bienvenidos al TP3 y felicitaciones, ya resolvieron el primer acertijo.
+
+En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafíos de cada nivel.
+Además tendrán que investigar otras preguntas para responder durante la defensa.
+El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los mismos desafíos y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta.
+Además, deberán implementar otro programa para comunicarse conmigo.
+
+Deberán estar atentos a los easter eggs.
+
+Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\n'
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
+
+Respuesta incorrecta: K5n2UFfpFMUN
+[1;1H[2J------------- DESAFIO -------------
+Bienvenidos al TP3 y felicitaciones, ya resolvieron el primer acertijo.
+
+En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafíos de cada nivel.
+Además tendrán que investigar otras preguntas para responder durante la defensa.
+El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los mismos desafíos y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta.
+Además, deberán implementar otro programa para comunicarse conmigo.
+
+Deberán estar atentos a los easter eggs.
+
+Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\n'
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
+
+Respuesta incorrecta: BUmyYq5XxXGt
+[1;1H[2J------------- DESAFIO -------------
+Bienvenidos al TP3 y felicitaciones, ya resolvieron el primer acertijo.
+
+En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafíos de cada nivel.
+Además tendrán que investigar otras preguntas para responder durante la defensa.
+El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los mismos desafíos y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta.
+Además, deberán implementar otro programa para comunicarse conmigo.
+
+Deberán estar atentos a los easter eggs.
+
+Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\n'
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
+
+Respuesta incorrecta: u^v
+[1;1H[2J------------- DESAFIO -------------
+Bienvenidos al TP3 y felicitaciones, ya resolvieron el primer acertijo.
+
+En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafíos de cada nivel.
+Además tendrán que investigar otras preguntas para responder durante la defensa.
+El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los mismos desafíos y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta.
+Además, deberán implementar otro programa para comunicarse conmigo.
+
+Deberán estar atentos a los easter eggs.
+
+Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\n'
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
+
+Respuesta incorrecta: chin_chu_lan_cha
+[1;1H[2J------------- DESAFIO -------------
+Bienvenidos al TP3 y felicitaciones, ya resolvieron el primer acertijo.
+
+En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafíos de cada nivel.
+Además tendrán que investigar otras preguntas para responder durante la defensa.
+El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los mismos desafíos y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta.
+Además, deberán implementar otro programa para comunicarse conmigo.
+
+Deberán estar atentos a los easter eggs.
+
+Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\n'
+
+
+----- PREGUNTA PARA INVESTIGAR -----
+¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?
+
