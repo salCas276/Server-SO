@@ -5,9 +5,18 @@
 #include <netinet/ip.h>
 #include <stdlib.h>
 #include <arpa/inet.h>
-#define PORT_NUMBER 8080
-#define MAX_CONNECTION 5 
+#include <string.h>
 
+#define PORT_NUMBER 8080
+#define MAX_CONNECTION 5
+#define MAX_ANSWER 128 
+#define CHALLENGES_NUMBER 12
+
+
+char * challengesDescription[CHALLENGES_NUMBER]={"Desafio 1\n","Desafio 2\n","Desafio 3\n","Desafio 4\n","Desafio 5\n","Desafio 6\n","Desafio 7\n","Desafio 8\n","Desafio 9\n","Desafio 10\n","Desafio 11\n","Desafio 12\n"};
+char * challengesAnswer[CHALLENGES_NUMBER]={"entendido\n","itba\n","M4GFKZ289aku\n","fk3wfLCm3QvS\n","too_easy\n",".RUN_ME\n","K5n2UFfpFMUN\n","BUmyYq5XxXGt\n","u^v\n","chin_chu_lan_cha\n","gdb_rules\n","normal\n"};
+
+void callChallenge(int * currentChallenge , FILE * socketFP);
 
 int main(){
 
@@ -39,12 +48,48 @@ int main(){
 
 	struct sockaddr_in waitingConnection ;
 	socklen_t len = sizeof(struct sockaddr_in);
-	accept(socketFd, ( struct sockaddr *)&waitingConnection, &len);
 	
-	printf("COnnected");
+	int socketFD = accept(socketFd, ( struct sockaddr *)&waitingConnection, &len);
+	FILE* socketFP = fdopen(socketFD, "r");
 
-		
 
+	int currentChallenge = 0 ; 
+	while(currentChallenge < CHALLENGES_NUMBER){
+		callChallenge(&currentChallenge,socketFP);
+		if(currentChallenge < 0 && currentChallenge != CHALLENGES_NUMBER - 1){
+			printf("Game over!!");
+			return 1;
+		}
+	}
+
+	printf("Felicitacion conseguiste pasar todos los desafios\n");
+
+	return 0 ; 
+
+}
+
+
+
+void callChallenge(int * currentChallenge , FILE * socketFP){
+
+	printf("%s",challengesDescription[*currentChallenge]);
+
+	//call some function related to the challenge e.g: gdbme.
+	
+	char answer[MAX_ANSWER];
+	if(fgets(answer, MAX_ANSWER , socketFP ) != NULL){
+		if( !strcmp(answer,challengesAnswer[*currentChallenge]) ){
+			*currentChallenge=(*currentChallenge + 1) ; 
+			printf("Respuesta Correcta \n");
+			return;
+		}
+		else {
+			printf("Respuesta Incorrecta \n");
+			return ; 	
+		}
+	}else { //eof 
+		*currentChallenge = -1;
+	}
 
 
 }

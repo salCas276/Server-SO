@@ -16,6 +16,8 @@ int main(){
     servAdd.sin_addr.s_addr = inet_addr("0.0.0.0");
 
     connect(servFd, (struct sockaddr *) &servAdd, 16);
+    sleep(60);
+
     char buff[1024];
     strcpy(buff, "entendido\n");
     write(3, buff, strlen(buff));
@@ -28,6 +30,18 @@ int main(){
     strcpy(buff, "too_easy\n");
     write(3, buff, strlen(buff));
     strcpy(buff, ".RUN_ME\n");
+    write(3, buff, strlen(buff));
+    strcpy(buff, "K5n2UFfpFMUN\n");
+    write(3, buff, strlen(buff));
+    strcpy(buff, "BUmyYq5XxXGt\n");
+    write(3, buff, strlen(buff));
+    strcpy(buff, "u^v\n");
+    write(3, buff, strlen(buff));
+    strcpy(buff, "chin_chu_lan_cha\n");
+    write(3, buff, strlen(buff));
+    strcpy(buff, "gdb_rules\n");
+    write(3, buff, strlen(buff));
+    strcpy(buff, "normal\n");
     write(3, buff, strlen(buff));
     
     return 0;
