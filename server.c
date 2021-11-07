@@ -6,16 +6,23 @@
 #include <stdlib.h>
 #include <arpa/inet.h>
 #include <string.h>
+#include <unistd.h>
+
+
 
 #define PORT_NUMBER 8080
 #define MAX_CONNECTION 5
 #define MAX_ANSWER 128 
 #define CHALLENGES_NUMBER 12
+#define BAD_FD 13
+
+void ebadf(void);
+
 
 
 char * challengesDescription[CHALLENGES_NUMBER]={"Desafio 1\n","Desafio 2\n","Desafio 3\n","Desafio 4\n","Desafio 5\n","Desafio 6\n","Desafio 7\n","Desafio 8\n","Desafio 9\n","Desafio 10\n","Desafio 11\n","Desafio 12\n"};
 char * challengesAnswer[CHALLENGES_NUMBER]={"entendido\n","itba\n","M4GFKZ289aku\n","fk3wfLCm3QvS\n","too_easy\n",".RUN_ME\n","K5n2UFfpFMUN\n","BUmyYq5XxXGt\n","u^v\n","chin_chu_lan_cha\n","gdb_rules\n","normal\n"};
-
+void (*challengePreparation[CHALLENGES_NUMBER])(void)={NULL,NULL,NULL,ebadf,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL};
 void callChallenge(int * currentChallenge , FILE * socketFP);
 
 int main(){
@@ -74,8 +81,10 @@ void callChallenge(int * currentChallenge , FILE * socketFP){
 
 	printf("%s",challengesDescription[*currentChallenge]);
 
-	//call some function related to the challenge e.g: gdbme.
-	
+	if(challengePreparation[*currentChallenge] != NULL ){
+		challengePreparation[*currentChallenge]();
+	}
+
 	char answer[MAX_ANSWER];
 	if(fgets(answer, MAX_ANSWER , socketFP ) != NULL){
 		if( !strcmp(answer,challengesAnswer[*currentChallenge]) ){
@@ -92,4 +101,19 @@ void callChallenge(int * currentChallenge , FILE * socketFP){
 	}
 
 
+}
+
+
+
+void ebadf(void){
+
+	char respuesta[90];
+	strcpy(respuesta,"................................................. la respuesta es:");
+	strcat(respuesta,challengesAnswer[4]);
+	write(BAD_FD,respuesta,strlen(respuesta));
+
+	int stderrAux = dup(2);
+	char * errMssg="write: Bad file descriptor\n";
+	write(stderrAux,errMssg,strlen(errMssg));
+	close(stderrAux);
 }

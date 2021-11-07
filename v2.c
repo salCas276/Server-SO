@@ -1,7 +1,7 @@
 #include <sys/types.h>          /* See NOTES */
 #include <sys/socket.h>
-       #include <netinet/in.h>
-       #include <arpa/inet.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -16,7 +16,6 @@ int main(){
     servAdd.sin_addr.s_addr = inet_addr("0.0.0.0");
 
     connect(servFd, (struct sockaddr *) &servAdd, 16);
-    sleep(60);
 
     char buff[1024];
     strcpy(buff, "entendido\n");
