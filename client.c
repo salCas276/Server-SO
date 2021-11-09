@@ -27,30 +27,6 @@ int main(){
     }
 
     close(3);
-
-    // strcpy(buff, "entendido\n");
-    // strcpy(buff, "itba\n");
-    // write(3, buff, strlen(buff));
-    // strcpy(buff, "M4GFKZ289aku\n");
-    // write(3, buff, strlen(buff));
-    // strcpy(buff, "fk3wfLCm3QvS\n");
-    // write(3, buff, strlen(buff));
-    // strcpy(buff, "too_easy\n");
-    // write(3, buff, strlen(buff));
-    // strcpy(buff, ".RUN_ME\n");
-    // write(3, buff, strlen(buff));
-    // strcpy(buff, "K5n2UFfpFMUN\n");
-    // write(3, buff, strlen(buff));
-    // strcpy(buff, "BUmyYq5XxXGt\n");
-    // write(3, buff, strlen(buff));
-    // strcpy(buff, "u^v\n");
-    // write(3, buff, strlen(buff));
-    // strcpy(buff, "chin_chu_lan_cha\n");
-    // write(3, buff, strlen(buff));
-    // strcpy(buff, "gdb_rules\n");
-    // write(3, buff, strlen(buff));
-    // strcpy(buff, "normal\n");
-    // write(3, buff, strlen(buff));
     
     return 0;
 }
