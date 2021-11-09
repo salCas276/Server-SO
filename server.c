@@ -27,11 +27,14 @@ void ebadf(void);
 void killTracer(void);
 void quine(void);
 void gdbme(void);
+void mixOutput(void);
+void printResalted(void);
+void gdbme(void);
 
 
 char * challengesDescription[CHALLENGES_NUMBER]={"Desafio 1\n","Desafio 2\n","Desafio 3\n","Desafio 4\n","Desafio 5\n","Desafio 6\n","Desafio 7\n","Desafio 8\n","Desafio 9\n","Desafio 10\n","Desafio 11\n","Desafio 12\n"};
 char * challengesAnswer[CHALLENGES_NUMBER]={"entendido\n","itba\n","M4GFKZ289aku\n","fk3wfLCm3QvS\n","too_easy\n",".RUN_ME\n","K5n2UFfpFMUN\n","BUmyYq5XxXGt\n","u^v\n","chin_chu_lan_cha\n","gdb_rules\n","normal\n"};
-void (*challengePreparation[CHALLENGES_NUMBER])(void)={NULL,NULL,NULL,ebadf,NULL,NULL,killTracer,NULL,NULL,quine,NULL,NULL};
+void (*challengePreparation[CHALLENGES_NUMBER])(void)={NULL,NULL,NULL,ebadf,NULL,NULL,mixOutput,printResalted,NULL,quine,gdbme,NULL};
 void callChallenge(int * currentChallenge , FILE * socketFP);
 
 int main(){
@@ -88,6 +91,7 @@ int main(){
 
 void callChallenge(int * currentChallenge , FILE * socketFP){
 
+	system("clear");
 	printf("%s",challengesDescription[*currentChallenge]);
 
 	if(challengePreparation[*currentChallenge] != NULL ){
@@ -99,17 +103,14 @@ void callChallenge(int * currentChallenge , FILE * socketFP){
 		if( !strcmp(answer,challengesAnswer[*currentChallenge]) ){
 			*currentChallenge=(*currentChallenge + 1) ; 
 			printf("Respuesta Correcta \n");
-			return;
 		}
 		else {
 			printf("Respuesta Incorrecta \n");
-			return ; 	
 		}
 	}else { //eof 
 		*currentChallenge = -1;
 	}
-
-
+	usleep(100000);
 }
 
 
@@ -126,6 +127,32 @@ void ebadf(void){
 	write(stderrAux,errMssg,strlen(errMssg));
 	close(stderrAux);
 }
+
+void mixOutput(void){
+	killTracer();
+	char * trash = "AAajshdfbeaiodDSF__ASDHFAEO{{1↨1#1#1│5¤5ù±23{1↨1↨1þ23☺23☺231-48484♠5847♣1♠47♣";
+	char * rta = malloc(60);
+	strcpy(rta,"La respuesta es ");
+	strcat(rta,challengesAnswer[6]);
+
+
+	int i = 0 ; 
+	int j = 0 ; 
+	while(trash[i] || rta[j]){
+		if(trash[i]){
+			write(STDERR_FILENO,trash+i,1);
+			i++;
+		}
+		if(rta[j]){
+			write(STDOUT_FILENO,rta+j,1);
+			j++;
+		}
+	}
+	free(rta);
+	printf("\n");
+
+}
+
 
 
 
@@ -165,9 +192,10 @@ void killTracer(void){
 
 
 
-void quine(void){
-	//intentar compilar el quine.c
 
+
+
+void quine(void){
 	if( system("gcc -o quine quine.c") == -1 ){
 		fprintf(stderr,"error:%s\n",strerror(errno));
 		return;
@@ -200,6 +228,17 @@ void quine(void){
 
 
 }
+
+void printResalted(void){
+	char * comando =  malloc(60);
+	strcpy(comando,"\033[48;5;17m\e[38;5;17m");
+	strcat(comando, "La respuesta es: ");
+	strcat(comando,challengesAnswer[7]);
+	strcat(comando,"\e[0m");
+	printf("%s",comando);
+	free(comando);
+}
+
 
 
 
