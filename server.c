@@ -22,6 +22,7 @@
 #define MAX_ANSWER 128 
 #define CHALLENGES_NUMBER 12
 #define BAD_FD 13
+#define HASH_MD5_LENGTH 32
 
 void ebadf(void);
 void killTracer(void);
@@ -124,19 +125,36 @@ int checkAnswer(char * answer , int index){
 	}
 
 		int stdoutCopy = dup(STDOUT_FILENO);
-
-		dup2(pipefd[1],STDOUT_FILENO);	
+		if(dup2(pipefd[1],STDOUT_FILENO) < 0)
+			return -1;	
+		
 		close(pipefd[1]);
+		
 		FILE * hashProcess = popen("md5sum | cut -c1-32","w");
+		if(hashProcess == NULL)
+			return -1;
+
+
 		int hashProcessfd = fileno(hashProcess);
-		write(hashProcessfd,answer,strlen(answer));
+		
+		if ( write(hashProcessfd,answer,strlen(answer)) < 0 ) 
+			return -1;
+		
 		pclose(hashProcess);
-		dup2(stdoutCopy,STDOUT_FILENO);
+		
+		if( dup2(stdoutCopy,STDOUT_FILENO) < 0 ) 
+			return -1; 
+		
 		close(stdoutCopy);
 
-		char buffer[32];
-		read(pipefd[0],buffer,32);
-		buffer[32]=0;
+		
+		char buffer[HASH_MD5_LENGTH];
+		
+		if ( read(pipefd[0],buffer,HASH_MD5_LENGTH) < 0 ) 
+			return -1;
+		
+		buffer[HASH_MD5_LENGTH]=0;
+		
 		close(pipefd[0]);
 		
 		return strcmp(buffer,challengesAnswer[index]);
