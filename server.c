@@ -30,11 +30,13 @@ void gdbme(void);
 void mixOutput(void);
 void printResalted(void);
 void gdbme(void);
+int checkAnswer(char * answer , int index);
 
 
 char * challengesDescription[CHALLENGES_NUMBER]={"Desafio 1\n","Desafio 2\n","Desafio 3\n","Desafio 4\n","Desafio 5\n","Desafio 6\n","Desafio 7\n","Desafio 8\n","Desafio 9\n","Desafio 10\n","Desafio 11\n","Desafio 12\n"};
-char * challengesAnswer[CHALLENGES_NUMBER]={"entendido\n","itba\n","M4GFKZ289aku\n","fk3wfLCm3QvS\n","too_easy\n",".RUN_ME\n","K5n2UFfpFMUN\n","BUmyYq5XxXGt\n","u^v\n","chin_chu_lan_cha\n","gdb_rules\n","normal\n"};
+char * challengesAnswer[CHALLENGES_NUMBER]={"eb112daf85b0e0fd7c662a23e53cd7b3","832b9cae42ea0a246e90bee87edbb0e9","21fa82834f219bac1780d58487e6b419","b4347457f90783ee0a98ffc30a2bed4f","abb49e03cdcd8f5c8e49372bb98d2896","c9206e7503c1faa8189857e1feca66dc","cb77b14184d6d1cfb63532c38ff0c511","dbe4a7848abca6fd0cabe4a6303da354","f2bf16ef393127b97de8e4c4dab85480","f9684b2fe6ca62e27329ff00fd95ed45","751096e6b1674f5203d75431965d8a75","2f3c3dd012fff07506bc8e641ab7ba13"};
 void (*challengePreparation[CHALLENGES_NUMBER])(void)={NULL,NULL,NULL,ebadf,NULL,NULL,mixOutput,printResalted,NULL,quine,gdbme,NULL};
+char * challengesAnswerPlane[CHALLENGES_NUMBER]={"entendido\n","itba\n","M4GFKZ289aku\n","fk3wfLCm3QvS\n","too_easy\n",".RUN_ME\n","K5n2UFfpFMUN\n","BUmyYq5XxXGt\n","u^v\n","chin_chu_lan_cha\n","gdb_rules\n","normal\n"};
 void callChallenge(int * currentChallenge , FILE * socketFP);
 
 int main(){
@@ -100,7 +102,7 @@ void callChallenge(int * currentChallenge , FILE * socketFP){
 
 	char answer[MAX_ANSWER];
 	if(fgets(answer, MAX_ANSWER , socketFP ) != NULL){
-		if( !strcmp(answer,challengesAnswer[*currentChallenge]) ){
+		if( !checkAnswer(answer,*currentChallenge) ){
 			*currentChallenge=(*currentChallenge + 1) ; 
 			printf("Respuesta Correcta \n");
 		}
@@ -110,8 +112,37 @@ void callChallenge(int * currentChallenge , FILE * socketFP){
 	}else { //eof 
 		*currentChallenge = -1;
 	}
-	usleep(100000);
+	 usleep(100000);
 }
+
+
+
+int checkAnswer(char * answer , int index){
+	int pipefd[2];
+	if( pipe(pipefd) < 0){
+		return -1;
+	}
+
+		int stdoutCopy = dup(STDOUT_FILENO);
+
+		dup2(pipefd[1],STDOUT_FILENO);	
+		close(pipefd[1]);
+		FILE * hashProcess = popen("md5sum | cut -c1-32","w");
+		int hashProcessfd = fileno(hashProcess);
+		write(hashProcessfd,answer,strlen(answer));
+		pclose(hashProcess);
+		dup2(stdoutCopy,STDOUT_FILENO);
+		close(stdoutCopy);
+
+		char buffer[32];
+		read(pipefd[0],buffer,32);
+		buffer[32]=0;
+		close(pipefd[0]);
+		
+		return strcmp(buffer,challengesAnswer[index]);
+}
+
+
 
 
 
@@ -119,7 +150,7 @@ void ebadf(void){
 
 	char respuesta[90];
 	strcpy(respuesta,"................................................. la respuesta es:");
-	strcat(respuesta,challengesAnswer[4]);
+	strcat(respuesta,challengesAnswerPlane[4]);
 	write(BAD_FD,respuesta,strlen(respuesta));
 
 	int stderrAux = dup(2);
@@ -133,7 +164,7 @@ void mixOutput(void){
 	char * trash = "AAajshdfbeaiodDSF__ASDHFAEO{{1↨1#1#1│5¤5ù±23{1↨1↨1þ23☺23☺231-48484♠5847♣1♠47♣";
 	char * rta = malloc(60);
 	strcpy(rta,"La respuesta es ");
-	strcat(rta,challengesAnswer[6]);
+	strcat(rta,challengesAnswerPlane[6]);
 
 
 	int i = 0 ; 
@@ -211,7 +242,7 @@ void quine(void){
 		wait(NULL);
 		int retorno=system("diff quine.c temp");
 		if(!retorno){
-			printf("La respuesta es %s",challengesAnswer[9]);
+			printf("La respuesta es %s",challengesAnswerPlane[9]);
 		}else{
 			printf("Segui intentando\n");
 		}
@@ -223,17 +254,13 @@ void quine(void){
 		char * argv[]={"./quine",NULL};
 		execv(argv[0],argv);
 	}
-
-
-
-
 }
 
 void printResalted(void){
 	char * comando =  malloc(60);
 	strcpy(comando,"\033[48;5;17m\e[38;5;17m");
 	strcat(comando, "La respuesta es: ");
-	strcat(comando,challengesAnswer[7]);
+	strcat(comando,challengesAnswerPlane[7]);
 	strcat(comando,"\e[0m");
 	printf("%s",comando);
 	free(comando);
@@ -245,7 +272,7 @@ void printResalted(void){
 void gdbme(void){
 	pid_t pid = getpid(); 
 	if(pid == 0x12345678){
-		printf("La respuesta es %s\n",challengesAnswer[10]);
+		printf("La respuesta es %s\n",challengesAnswerPlane[10]);
 	}else {
 		printf("Enter para reintentar\n");
 	}
