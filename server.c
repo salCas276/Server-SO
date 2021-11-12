@@ -113,7 +113,7 @@ void callChallenge(int * currentChallenge , FILE * socketFP){
 	}else { //eof 
 		*currentChallenge = -1;
 	}
-	 usleep(100000);
+	 usleep(1000000);
 }
 
 
@@ -124,40 +124,40 @@ int checkAnswer(char * answer , int index){
 		return -1;
 	}
 
-		int stdoutCopy = dup(STDOUT_FILENO);
-		if(dup2(pipefd[1],STDOUT_FILENO) < 0)
-			return -1;	
+	int stdoutCopy = dup(STDOUT_FILENO);
+	if(dup2(pipefd[1],STDOUT_FILENO) < 0)
+		return -1;	
 		
-		close(pipefd[1]);
+	close(pipefd[1]);
 		
-		FILE * hashProcess = popen("md5sum | cut -c1-32","w");
-		if(hashProcess == NULL)
-			return -1;
+	FILE * hashProcess = popen("md5sum | cut -c1-32","w");
+	if(hashProcess == NULL)
+		return -1;
 
 
-		int hashProcessfd = fileno(hashProcess);
+	int hashProcessfd = fileno(hashProcess);
 		
-		if ( write(hashProcessfd,answer,strlen(answer)) < 0 ) 
-			return -1;
+	if ( write(hashProcessfd,answer,strlen(answer)) < 0 ) 
+		return -1;
 		
-		pclose(hashProcess);
+	pclose(hashProcess);
 		
-		if( dup2(stdoutCopy,STDOUT_FILENO) < 0 ) 
-			return -1; 
+	if( dup2(stdoutCopy,STDOUT_FILENO) < 0 ) 
+		return -1; 
 		
-		close(stdoutCopy);
+	close(stdoutCopy);
 
 		
-		char buffer[HASH_MD5_LENGTH];
+	char buffer[HASH_MD5_LENGTH];
 		
-		if ( read(pipefd[0],buffer,HASH_MD5_LENGTH) < 0 ) 
-			return -1;
+	if ( read(pipefd[0],buffer,HASH_MD5_LENGTH) < 0 ) 
+		return -1;
 		
-		buffer[HASH_MD5_LENGTH]=0;
+	buffer[HASH_MD5_LENGTH]=0;
 		
-		close(pipefd[0]);
+	close(pipefd[0]);
 		
-		return strcmp(buffer,challengesAnswer[index]);
+	return strcmp(buffer,challengesAnswer[index]);
 }
 
 
