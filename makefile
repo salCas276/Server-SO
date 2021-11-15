@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall -std=gnu99
 SERVER_NAME= server
 
 all: client segment
