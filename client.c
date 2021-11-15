@@ -11,12 +11,15 @@
 #define MAX_ANSWER 128
 
 
-int main(){
+int main(int argc , char * argv[]){
+    if(argc != 2 )
+        return -1; 
+
     int servFd = socket(AF_INET, SOCK_STREAM, 0);
     struct sockaddr_in servAdd;
     servAdd.sin_family = AF_INET;
     servAdd.sin_port = htons(8080);
-    servAdd.sin_addr.s_addr = inet_addr("172.17.0.2");
+    servAdd.sin_addr.s_addr = inet_addr(argv[1]);
 
     connect(servFd, (struct sockaddr *) &servAdd, 16);
 
