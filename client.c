@@ -16,17 +16,17 @@ int main(){
     struct sockaddr_in servAdd;
     servAdd.sin_family = AF_INET;
     servAdd.sin_port = htons(8080);
-    servAdd.sin_addr.s_addr = inet_addr("0.0.0.0");
+    servAdd.sin_addr.s_addr = inet_addr("172.17.0.2");
 
     connect(servFd, (struct sockaddr *) &servAdd, 16);
 
     char buff[MAX_ANSWER];
 
     while(fgets(buff,MAX_ANSWER,stdin) != NULL){
-        write(3, buff, strlen(buff));
+        write(servFd, buff, strlen(buff));
     }
 
-    close(3);
+    close(servFd);
     
     return 0;
 }

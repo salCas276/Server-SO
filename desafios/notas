@@ -1,4 +1,0 @@
-Arancamos usando strace para ver las syscalls que se hacen en ./server
-Vemos que se crea un socket, se llama a listen y luego se espera que alguien se quiera conectar para aceptarlo
-Nos conectamos con connect y le mandamos el mensaje "entendido\n" con send
-The Wire S1E5 (season 1, episode 5) tiene como nombre "the pager", en unix un "pager" es un programa que te permite leer un archivo linea por linea o pagina por pagina, por ejemplo "less".
