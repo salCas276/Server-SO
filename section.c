@@ -1,6 +1,6 @@
 #include <stdio.h>
 
 int main(){
-    printf("Estoy muy orgulloso de que hayan logrado esto. Les espera un premio especial.\n");
+    printf("Ariel, quiero mi premio especial. Atentamente, Salvador.\n");
     return 0;
 }
