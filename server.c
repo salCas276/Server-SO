@@ -81,6 +81,8 @@ int main(){
 		callChallenge(&currentChallenge,socketFP);
 		if(currentChallenge < 0 && currentChallenge != CHALLENGES_NUMBER - 1){
 			printf("Game over!!");
+			close(acceptFd);
+			close(socketFd);
 			return 1;
 		}
 	}
